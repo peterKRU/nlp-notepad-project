@@ -1,0 +1,14 @@
+com\krastanow\App.class
+client\module\ViewController$TokenizeListener.class
+request\library\RequestReader.class
+client\module\ClientRunner.class
+client\module\ClientView$1.class
+client\module\Updater.class
+client\module\ViewController.class
+client\module\Main.class
+client\module\ViewController$TokenizeListener$DetectSentencesListener.class
+request\library\Product.class
+client\module\ClientView.class
+client\module\Consumer.class
+client\module\ViewUpdater.class
+request\library\Request.class
