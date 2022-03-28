@@ -1,12 +1,4 @@
-FROM centos:latest
-
-RUN yum install libXext.x86_64
-RUN yum install libXrender.x86_64 
-RUN yum install libXtst.x86_64
-
-FROM openjdk:8
-
-ENV JAVA_HOME /opt/jdk
+FROM openjdk:11
 
 ENV PATH ${PATH}:${JAVA_HOME}/bin
 
