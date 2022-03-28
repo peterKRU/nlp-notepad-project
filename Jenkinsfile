@@ -26,9 +26,8 @@ pipeline {
             	//Run JUnit tests and archive new .jar artifact
                 success {
                     junit '**/target/surefire-reports/TEST-*.xml'
-                    //archiveArtifacts 'target/*.jar'
-                    //test
-                    archiveArtifacts 'C:/Users/Peter/Desktop/TESTS/Artifacts/*.jar'
+                    archiveArtifacts 'target/*.jar'
+                    
                 }
             }
         }
