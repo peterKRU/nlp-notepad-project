@@ -25,5 +25,24 @@ pipeline {
                 }
             }
         }
+        
+        stage("Build docker-image") {
+        	steps {
+        		sh """
+        			docker build -t imagetest1 .
+        		"""	
+        	
+        	}
+        }
+        
+        stage("Run docker-image") {
+        	steps {
+        		sh """
+        			docker run --rm imagetest1
+        		"""	
+        	
+        	}
+        }
+        
     }
 }
