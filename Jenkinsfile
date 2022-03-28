@@ -1,24 +1,29 @@
 pipeline {
     agent any
-
+	
+	environment {
+		registry = "peterktastanow/nlp-notepad-project"
+		registryCredential = 'dockerhub'
+		dockerImage = ''
+	}
+	
     tools {
-        // Install the Maven version configured as "M3" and add it to the path.
+        // Configure maven
         maven "MAVEN3"
     }
 
     stages {
-        stage('Build') {
+        stage('Build maven project') {
             steps {
-                // Get some code from a GitHub repository
+                // Clone github repository
                 git 'https://github.com/peterKRU/nlp-notepad-project.git'
 
-                // To run Maven on a Windows agent, use
+                // Trigger maven build
                 bat "mvn -Dmaven.test.failure.ignore=true install"
             }
 
             post {
-                // If Maven was able to run the tests, even if some of the test
-                // failed, record the test results and archive the jar file.
+            	//Run JUnit tests and archive new .jar artifact
                 success {
                     junit '**/target/surefire-reports/TEST-*.xml'
                     archiveArtifacts 'target/*.jar'
@@ -26,6 +31,30 @@ pipeline {
             }
         }
         
+        stage('Clone updated git repository') {
+        	steps {
+        		git 'https://github.com/peterKRU/nlp-notepad-project.git'
+        	}
+        }
+        
+        stage('Build docker image') {
+        	steps {
+        		script{
+        			dockerImage = docker.build registry + ":$BUILD_NUMBER"
+        		}
+        	
+        	}
+        }
+        
+        stage('Deploy docker image') {
+        	steps {
+        		script {
+        			docker.withRegistry( '', registryCredential ) {
+					dockerImage.push()
+					}
+        		}
+        	}
+        }
         
     }
 }
