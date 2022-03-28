@@ -34,7 +34,7 @@ public class ClientRunner {
 		
 		System.out.println("Starting...");
 		
-		for(int i = 0; i < 20; i++) {
+		for(int i = 0; i < 25; i++) {
 			
 			Thread.sleep(100);
 			System.out.println(i);
