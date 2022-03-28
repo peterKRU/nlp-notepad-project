@@ -1,19 +1,13 @@
 pipeline {
     agent any
 	
-	environment {
-		
-		CI = true
-		ARTIFACTORY_ACCESS_TOKEN = credentials('artifactory-access-token')
-	}
-	
     tools {
         // Configure maven
         maven "MAVEN3"
     }
 
     stages {
-        stage('Build') {
+        stage('Build maven project') {
             steps {
                 // Clone github repository
                 git 'https://github.com/peterKRU/nlp-notepad-project.git'
@@ -32,25 +26,6 @@ pipeline {
             }
         }
         
-        stage('Deploy to artifactory') {
-        	steps {
-        		bat "jf rt upload --url"
-        	}
-        }
-        
-        stage('Build docker image') {
-        	steps {
-        		script{
-        			dockerImage = docker.build registry + ":$BUILD_NUMBER"
-        		}
-        	
-        	}
-        }
-        
-        
-        
         
     }
 }
-
-
