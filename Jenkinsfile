@@ -27,21 +27,14 @@ pipeline {
         }
         
         stage("Build docker-image") {
-        	steps {
-        		sh """
-        			docker build -t imagetest1 .
-        		"""	
-        	
-        	}
-        }
+        	agent {
+ 	   		// Equivalent to "docker build -f Dockerfile.build --build-arg version=1.0.2 ./build/
+    			dockerfile {
+        		filename 'Dockerfile'
+        		label 'test-build'
+    			}
+}
         
-        stage("Run docker-image") {
-        	steps {
-        		sh """
-        			docker run --rm imagetest1
-        		"""	
-        	
-        	}
         }
         
     }
