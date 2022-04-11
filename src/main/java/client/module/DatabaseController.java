@@ -12,16 +12,33 @@ public class DatabaseController {
 
         Connection connection = connectDatabase();
 
-        //testDatabase();
-        //User newUser = commandController.createUser(1003, "peter2", "zeleZele111.");
-        //insertUser(connection, newUser);
-        executeTransaction(connection);
+        //executeTransaction(connection);
+
+        for(int i = 0; i < 2; i++) {
+
+            executeTransaction(connection);
+
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+        }
 
     }
 
     public Connection connectDatabase() throws SQLException {
 
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/concept-storage","root", "zelkaZELKA111.");
+        String url = "jdbc:mysql://localhost:3306/concept-storage";
+
+        //docker url
+        String dockerUrl = "jdbc:mysql://host.docker.internal:3306/concept-storage";
+
+        String user = "root";
+        String password = "zelkaZELKA111.";
+
+        Connection connection = DriverManager.getConnection(dockerUrl, user, password);
 
         return connection;
 
@@ -30,19 +47,9 @@ public class DatabaseController {
     public void executeTransaction(Connection connection) throws SQLException {
 
         //retrieve table
-        System.out.println("Before insertion: ");
-        retrieveTable(connection, "user");
-        System.out.println("Inserting new user...");
+        System.out.println("user table: ");
+        System.out.println("----------");
 
-        //create new user
-        CommandController comm = new CommandController();
-        User newUser = comm.createUser(1008, "peter4", "ololo2");
-
-        //insert into table
-        insertUser(connection, newUser);
-
-        //retrieve new table
-        System.out.println("After insertion: ");
         retrieveTable(connection, "user");
 
     }
@@ -73,9 +80,14 @@ public class DatabaseController {
         ResultSet resultSet = statement.executeQuery(sqlCommand);
 
         while (resultSet.next()){
-            System.out.println(resultSet.getString("user_id"));
-            System.out.println(resultSet.getString("user_name"));
-            System.out.println(resultSet.getString("user_password"));
+
+            System.out.println("user_id: " + resultSet.getString("user_id"));
+
+            System.out.println("user_name: " +resultSet.getString("user_name"));
+
+            System.out.println("user_password: " +resultSet.getString("user_password"));
+            System.out.println("----------");
+
         }
 
     }
