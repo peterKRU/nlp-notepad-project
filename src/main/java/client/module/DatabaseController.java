@@ -39,7 +39,7 @@ public class DatabaseController {
         String user = "root";
         String password = "zelkaZELKA111.";
 
-        Connection connection = DriverManager.getConnection(localUrl, user, password);
+        Connection connection = DriverManager.getConnection(dockerUrl, user, password);
 
         return connection;
 
