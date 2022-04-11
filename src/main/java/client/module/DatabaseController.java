@@ -30,11 +30,6 @@ public class DatabaseController {
 
     public Connection connectDatabase() throws SQLException {
 
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
 
         String localUrl = "jdbc:mysql://localhost:3306/concept-storage";
 
@@ -44,7 +39,7 @@ public class DatabaseController {
         String user = "root";
         String password = "zelkaZELKA111.";
 
-        Connection connection = DriverManager.getConnection(dockerUrl, user, password);
+        Connection connection = DriverManager.getConnection(localUrl, user, password);
 
         return connection;
 
