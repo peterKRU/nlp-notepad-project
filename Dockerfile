@@ -1,4 +1,4 @@
-FROM openjdk:11
+FROM openjdk:latest
 
 
 COPY target/nlp-notepad-project-*.jar /nlp-notepad-project.jar
