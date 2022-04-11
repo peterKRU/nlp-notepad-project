@@ -30,7 +30,13 @@ public class DatabaseController {
 
     public Connection connectDatabase() throws SQLException {
 
-        String url = "jdbc:mysql://localhost:3306/concept-storage";
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        String localUrl = "jdbc:mysql://localhost:3306/concept-storage";
 
         //docker url
         String dockerUrl = "jdbc:mysql://host.docker.internal:3306/concept-storage";
