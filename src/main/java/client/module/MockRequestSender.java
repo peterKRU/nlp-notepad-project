@@ -48,7 +48,7 @@ public class MockRequestSender {
 		requestHandler.requestGetAll();
 		requestHandler.requestGetTags();
 		//requestHandler.requestGetConcept("");
-		requestHandler.requestGetDefinition("");
+		//requestHandler.requestGetDefinition("");
 		requestHandler.requestGetNote("");
 		
 		try {
