@@ -16,7 +16,7 @@ public class DatabaseController {
 
         for(int i = 0; i < 2; i++) {
 
-            executeTransaction(connection);
+            //  executeTransaction(connection);
 
             try {
                 Thread.sleep(10000);
@@ -39,7 +39,7 @@ public class DatabaseController {
         String user = "root";
         String password = "zelkaZELKA111.";
 
-        Connection connection = DriverManager.getConnection(dockerUrl, user, password);
+        Connection connection = DriverManager.getConnection(localUrl, user, password);
 
         return connection;
 
