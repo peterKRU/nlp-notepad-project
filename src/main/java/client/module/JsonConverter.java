@@ -21,4 +21,14 @@ public class JsonConverter {
 		
 	}
 	
+	public Concept jsonToConcept(String jsonString) throws JsonProcessingException {
+		
+        //String jsonString = mapper.writeValueAsString(concept);
+        Concept concept = mapper.readValue(jsonString, Concept.class);
+        //Car car = objectMapper.readValue(json, Car.class);
+        
+		return concept;
+		
+	}
+	
 }

@@ -95,56 +95,57 @@ public class RequestHandler {
 	
 	public void requestGetDefinitions(Integer parentId) throws MalformedURLException {
 
-		//System.out.println(urlMap.get("getConcept"));
-		
-		BufferedReader reader;
-		String line;
-		StringBuffer responseContent = new StringBuffer();
-		
-		String urlString = "http://localhost:8082/web_server/webapi/resource/definitions/" + parentId; 
-		
-		System.out.println(urlMap.get("getConcept"));
-		
-		URL url = new URL(urlString);
-		
-		try {
-			connection = (HttpURLConnection) url.openConnection();
-			
-			connection.setRequestMethod("GET");
-			connection.setConnectTimeout(5000);
-			connection.setReadTimeout(5000);
-			
-			int connectionStatus = connection.getResponseCode();
-			//System.out.println(connectionStatus);
-			
-			if(connectionStatus > 299) {
-				
-				reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
-				
-				while((line = reader.readLine()) != null) {
-					responseContent.append(line);
-				}
-				
-			}
-			else {
-				
-				reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-				
-				while((line = reader.readLine()) != null) {
-					responseContent.append(line);
-				}
-			}
-			
-			reader.close();
-			
-			System.out.println(responseContent.toString());
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			connection.disconnect();
-		}
+//		//System.out.println(urlMap.get("getConcept"));
+//		
+//		BufferedReader reader;
+//		String line;
+//		StringBuffer responseContent = new StringBuffer();
+//		
+//		String urlString = "http://localhost:8082/web_server/webapi/resource/definitions/" + parentId; 
+//		
+//		//System.out.println(urlMap.get("getConcept"));
+//		
+//		URL url = new URL(urlString);
+//		
+//		try {
+//			connection = (HttpURLConnection) url.openConnection();
+//			
+//			connection.setRequestMethod("GET");
+//			connection.setConnectTimeout(5000);
+//			connection.setReadTimeout(5000);
+//			
+//			int connectionStatus = connection.getResponseCode();
+//			//System.out.println(connectionStatus);
+//			
+//			if(connectionStatus > 299) {
+//				
+//				reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
+//				
+//				while((line = reader.readLine()) != null) {
+//					responseContent.append(line);
+//				}
+//				
+//			}
+//			else {
+//				
+//				reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+//				
+//				while((line = reader.readLine()) != null) {
+//					responseContent.append(line);
+//				}
+//			}
+//			
+//			
+//			reader.close();
+//			
+//			System.out.println(responseContent.toString());
+//			
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} finally {
+//			connection.disconnect();
+//		}
 
 		
 	}
