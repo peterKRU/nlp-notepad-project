@@ -42,6 +42,9 @@ public class Main {
 					System.out.println("Terminating Console...");
 					break;
 				}
+				else {
+					System.out.println("elele");
+				}
 				
 			}
 			else {
