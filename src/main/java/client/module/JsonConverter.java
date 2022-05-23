@@ -1,16 +1,33 @@
 package client.module;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import local_server.module.Concept;
 
 public class JsonConverter {
 	
-	private static ObjectMapper mapper = new ObjectMapper();
+	public static ObjectMapper mapper = new ObjectMapper();
 	
 	public JsonConverter() {
 		
+	}
+	
+	public ArrayList<String> getKeysArray(File file) throws IOException {
+		
+		ArrayList<String> keysArray = new ArrayList<String>();
+		JsonNode jsonNode = mapper.readTree(file);
+	    
+		Iterator<String> iterator = jsonNode.fieldNames();
+		iterator.forEachRemaining(e -> keysArray.add(e));
+		
+		return keysArray;
 	}
 	
 	public String conceptToJson(Concept concept) throws JsonProcessingException {
@@ -21,14 +38,5 @@ public class JsonConverter {
 		
 	}
 	
-	public Concept jsonToConcept(String jsonString) throws JsonProcessingException {
-		
-        //String jsonString = mapper.writeValueAsString(concept);
-        Concept concept = mapper.readValue(jsonString, Concept.class);
-        //Car car = objectMapper.readValue(json, Car.class);
-        
-		return concept;
-		
-	}
 	
 }
