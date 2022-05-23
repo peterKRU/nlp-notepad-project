@@ -22,10 +22,15 @@ public class JsonConverter {
 	public ArrayList<String> getKeysArray(File file) throws IOException {
 		
 		ArrayList<String> keysArray = new ArrayList<String>();
+		
+		
 		JsonNode jsonNode = mapper.readTree(file);
 	    
 		Iterator<String> iterator = jsonNode.fieldNames();
-		iterator.forEachRemaining(e -> keysArray.add(e));
+		//iterator.forEachRemaining(e -> keysArray.add(e));
+		while(iterator.hasNext()) {
+			keysArray.add(iterator.next());
+		}
 		
 		return keysArray;
 	}
