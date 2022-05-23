@@ -36,4 +36,8 @@ public class Concept implements Serializable{
 		this.conceptTag = conceptTag;
 	}
 	
+	public int getRandomNumber(int min, int max) {
+	    return (int) ((Math.random() * (max - min)) + min);
+	}
+	
 }
