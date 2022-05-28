@@ -22,7 +22,6 @@ public class ConfigManager {
 	public void loadConfig(String configFilePath, HashMap<String, String> configMap) throws IOException {
 		
 		JsonConverter jsonConverter = new JsonConverter();
-		//File config = new File("files/config.json");
 		File configFile = new File(configFilePath);
 		
 		JsonNode configNode = JsonConverter.mapper.readTree(configFile);

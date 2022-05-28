@@ -15,9 +15,12 @@ public class Main {
 
 	public static void main(String[] args) throws InterruptedException, SQLException, UnsupportedEncodingException, IOException {
 		
-		ConsoleManager consoleManager = new ConsoleManager();
-        consoleManager.runConsole();
+		//ConsoleManager consoleManager = new ConsoleManager();
+        //consoleManager.runConsole();
 		
+        String env = System.getenv("TEST");
+        System.out.println(env);       
+        
 	}
 
 	
