@@ -37,7 +37,7 @@ public class RequestHandler {
 		
 	}
 	
-	public Concept requestGetConcept(String conceptTag) throws MalformedURLException {
+	public Concept requestGetConcept() throws MalformedURLException {
 		
 		System.out.println(urlMap.get("getConcept"));
 		
@@ -45,9 +45,9 @@ public class RequestHandler {
 		String line;
 		StringBuffer responseContent = new StringBuffer();
 		
-		String urlString = "http://localhost:8082/web_server/webapi/resource/concept/" + conceptTag; 
+		String urlString = "http://127.0.0.1:8080/concept"; 
 		
-		System.out.println(urlMap.get("getConcept"));
+		//System.out.println(urlMap.get("getConcept"));
 		
 		URL url = new URL(urlString);
 		

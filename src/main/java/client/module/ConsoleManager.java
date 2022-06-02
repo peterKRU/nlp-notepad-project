@@ -69,11 +69,11 @@ public class ConsoleManager {
         	}
         	
         	else if(command.equals("ololo get concept")) {
-        		System.out.println("tag? ");
+        		//System.out.println("tag? ");
         		String tag = scanner.nextLine();
         		System.out.print("server: ");
-        		requestHandler.requestGetConcept(tag);
-        		requestHandler.requestGetDefinitions(null);
+        		//requestHandler.requestGetConcept(tag);
+        		//requestHandler.requestGetDefinitions(null);
         		
         		command = scanner.nextLine();
         		continue;
